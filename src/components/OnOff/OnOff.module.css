@@ -1,0 +1,43 @@
+.buttonSwitch{
+
+}
+.buttonSwitch div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.buttonSwitch button{
+    width: 100px;
+    height: 50px;
+}
+
+.buttonOn{
+    background-color: green;
+}
+
+.buttonOff {
+    background-color: red;
+}
+
+.buttonInactive {
+    background-color: rgba(128, 128, 128, 0.36);
+}
+
+.circle{
+    margin: 0 0 5px 10px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    align-items: flex-end;
+    border: black solid 1px;
+
+
+}
+.on {
+    background-color: green;
+}
+
+.off {
+    background-color: red;
+}
