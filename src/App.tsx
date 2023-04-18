@@ -17,8 +17,8 @@ function App() {
             <Rating value={5}/>
             <PageTitle title={"My page"}/>
             <PageTitle title={"My friends"}/>
-            <Accordion title={"Menu"} collapsed={true}/>
-            <Accordion title={"Users"} collapsed={false}/>
+            <Accordion title={"Menu"}/>
+            <Accordion title={"Users"}/>
             <OnOff/>
             <OnOff/>
         </div>
