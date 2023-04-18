@@ -5,7 +5,6 @@ type RatingPropsType = {
 }
 
 export function Rating(props: RatingPropsType) {
-    console.log("Rating")
 
     return  <div>
         <Star selected={props.value > 0}/>
@@ -81,7 +80,6 @@ type StarPropsType = {
     selected: boolean;
 }
 function Star(props: StarPropsType) {
-    console.log("Star")
 
     if (props.selected) {
         return (

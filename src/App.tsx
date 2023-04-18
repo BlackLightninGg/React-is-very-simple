@@ -6,7 +6,6 @@ import {Rating} from "./components/Rating/Rating";
 import OnOff from "./components/OnOff/OnOff";
 
 function App() {
-    console.log("App")
     return (
         <div className="App">
             <PageTitle title={"Hello, everybody!"}/>
@@ -20,8 +19,8 @@ function App() {
             <PageTitle title={"My friends"}/>
             <Accordion title={"Menu"} collapsed={true}/>
             <Accordion title={"Users"} collapsed={false}/>
-            <OnOff on={true}/>
-            <OnOff on={false}/>
+            <OnOff/>
+            <OnOff/>
         </div>
     );
 }
