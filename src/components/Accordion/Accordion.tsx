@@ -7,7 +7,6 @@ type AccordionPropsType = {
 export function Accordion(props: AccordionPropsType) {
 
     const [collapsed,useCollapsed] = useState<boolean>(false)
-    console.log(collapsed)
     const OnClickHandler = () => {
         useCollapsed(!collapsed)
     }

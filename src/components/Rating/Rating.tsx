@@ -1,17 +1,21 @@
-import React from "react";
+import React, {useState, MouseEvent} from "react";
 
-type RatingPropsType = {
-    value: 0 | 1 | 2 | 3 | 4 | 5
-}
 
-export function Rating(props: RatingPropsType) {
+
+export function Rating() {
+
+    const [countStarSelected,setCountStarSelected] = useState<number|string>(0)
+
+    function onclickButtonStarHandler(e:MouseEvent<HTMLButtonElement>){
+        setCountStarSelected(e.currentTarget.innerHTML)
+    }
 
     return  <div>
-        <Star selected={props.value > 0}/>
-        <Star selected={props.value > 1}/>
-        <Star selected={props.value > 2}/>
-        <Star selected={props.value > 3}/>
-        <Star selected={props.value > 4}/>
+        <Star selected={countStarSelected > 0}/><button onClick={onclickButtonStarHandler}>1</button>
+        <Star selected={countStarSelected > 1}/><button onClick={onclickButtonStarHandler}>2</button>
+        <Star selected={countStarSelected > 2}/><button onClick={onclickButtonStarHandler}>3</button>
+        <Star selected={countStarSelected > 3}/><button onClick={onclickButtonStarHandler}>4</button>
+        <Star selected={countStarSelected > 4}/><button onClick={onclickButtonStarHandler}>5</button>
     </div>
 
     // if (props.value === 1) {
