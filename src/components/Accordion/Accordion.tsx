@@ -7,15 +7,11 @@ type AccordionPropsType = {
 export function Accordion(props: AccordionPropsType) {
 
     const [collapsed,useCollapsed] = useState<boolean>(false)
-    const OnClickHandler = () => {
-        useCollapsed(!collapsed)
-    }
+
 
     return (
-       <div> <span>
-           <TitleAccordion title={props.title}/>
-           <button onClick={OnClickHandler}>Toggle</button>
-           </span>
+       <div>
+           <TitleAccordion title={props.title} collapsed={collapsed} useCollapsed={useCollapsed} />
            { collapsed && <BodyAccordion/>}
        </div>
 )
@@ -23,10 +19,15 @@ export function Accordion(props: AccordionPropsType) {
 
 type TitleAccordionPropsType = {
     title: string
+    collapsed:boolean
+    useCollapsed:(collapsed:boolean)=> void
 }
 
 function TitleAccordion(props: TitleAccordionPropsType) {
-    return <h3>{props.title}</h3>
+    const OnClickHandler = () => {
+        props.useCollapsed(!props.collapsed)
+    }
+    return <h3 onClick={OnClickHandler}>{props.title}</h3>
 }
 
 function BodyAccordion() {
