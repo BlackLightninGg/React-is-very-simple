@@ -1,33 +1,32 @@
-import React, {useState} from "react";
+import React from "react";
 
 type AccordionPropsType = {
-    title: string,
+    title: string
+    collapsed: boolean
+    useCollapsed: (collapsed: boolean) => void
 }
 
-export function Accordion(props: AccordionPropsType) {
-
-    const [collapsed,useCollapsed] = useState<boolean>(false)
-
+export const Accordion: React.FC<AccordionPropsType> = ({title, collapsed, useCollapsed}) => {
 
     return (
-       <div>
-           <TitleAccordion title={props.title} collapsed={collapsed} useCollapsed={useCollapsed} />
-           { collapsed && <BodyAccordion/>}
-       </div>
-)
+        <div>
+            <TitleAccordion title={title} collapsed={collapsed} useCollapsed={useCollapsed}/>
+            {collapsed && <BodyAccordion/>}
+        </div>
+    )
 }
 
 type TitleAccordionPropsType = {
     title: string
-    collapsed:boolean
-    useCollapsed:(collapsed:boolean)=> void
+    collapsed: boolean
+    useCollapsed: (collapsed: boolean) => void
 }
 
-function TitleAccordion(props: TitleAccordionPropsType) {
+const TitleAccordion: React.FC<TitleAccordionPropsType> = ({title, collapsed, useCollapsed}) => {
     const OnClickHandler = () => {
-        props.useCollapsed(!props.collapsed)
+        useCollapsed(!collapsed)
     }
-    return <h3 onClick={OnClickHandler}>{props.title}</h3>
+    return <h3 onClick={OnClickHandler}>{title}</h3>
 }
 
 function BodyAccordion() {
@@ -38,5 +37,4 @@ function BodyAccordion() {
             <li>3</li>
         </>
     )
-        ;
 }

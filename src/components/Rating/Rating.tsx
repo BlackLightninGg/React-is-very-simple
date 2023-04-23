@@ -1,9 +1,13 @@
-import React, {useState} from "react";
+import React from "react";
 
+export type ValueStarType = 0 | 1 | 2 | 3 | 4 | 5
 
-export function Rating() {
+type PropsType = {
+    countStarSelected : ValueStarType
+    setCountStarSelected: (number:ValueStarType) => void
+}
+export const Rating : React.FC<PropsType> = ({countStarSelected, setCountStarSelected}) => {
 
-    const [countStarSelected, setCountStarSelected] = useState<number>(0)
 
 
 
@@ -84,17 +88,18 @@ export function Rating() {
 
 type StarPropsType = {
     selected: boolean;
-    setCountStarSelected: (text:number)=>void
-    number:number
+    setCountStarSelected: (value: ValueStarType) => void
+    number: ValueStarType
 }
 
-function Star(props: StarPropsType) {
+const  Star : React.FC<StarPropsType> =({ selected, setCountStarSelected, number}) => {
     function onclickButtonStarHandler() {
-        props.setCountStarSelected(props.number)
+        setCountStarSelected(number)
     }
 
 
-    return props.selected ? <span id={'spanStar'} onClick={onclickButtonStarHandler}><b>Star </b></span> : <span onClick={onclickButtonStarHandler}>Star </span>
+    // return props.selected ? <span id={'spanStar'} onClick={onclickButtonStarHandler}><b>Star </b></span> : <span onClick={onclickButtonStarHandler}>Star </span>
+    return <span onClick={onclickButtonStarHandler}>{selected ? <b>Star </b> : "Star "}</span>
 
 //----------------------------------------------------------Old syntax----------------------------------------------------------------
 
