@@ -1,22 +1,31 @@
-import React, {useState} from 'react';
+import React from 'react';
 import s from './OnOff.module.css'
 
+type PropsType = {
+    onOff: boolean
+    setOnOFF: (onOff: boolean) => void
+}
+export const OnOff: React.FC<PropsType> = ({onOff, setOnOFF}) => {
 
-export const OnOff = () => {
+    const onClickOnHandler = () => {
+        setOnOFF(true)
+    }
+    const onClickOffHandler = () => {
+        setOnOFF(false)
+    }
 
-    const [onOff, setOnOFF] = useState<boolean>(false)
     return (
         <div className={s.buttonSwitch}>
             {onOff && <div>
-                <button onClick={()=>setOnOFF(true)} className={s.buttonOn}>On</button>
-                <button onClick={()=>setOnOFF(false)} className={s.buttonInactive}>Off</button>
+                <button onClick={onClickOnHandler} className={s.buttonOn}>On</button>
+                <button onClick={onClickOffHandler} className={s.buttonInactive}>Off</button>
                 <div className={s.circle + ' ' + s.on}></div>
             </div>}
             {!onOff && <div>
-                <button onClick={()=>setOnOFF(true)} className={s.buttonInactive}>On</button>
-                <button onClick={()=>setOnOFF(false)} className={s.buttonOff}>Off</button>
+                <button onClick={onClickOnHandler} className={s.buttonInactive}>On</button>
+                <button onClick={onClickOffHandler} className={s.buttonOff}>Off</button>
                 <div className={s.circle + ' ' + s.off}></div>
-                </div>}
+            </div>}
         </div>
     );
 };

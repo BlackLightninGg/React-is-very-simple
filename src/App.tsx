@@ -8,6 +8,7 @@ function App() {
 
     const [countStarSelected, setCountStarSelected] = useState<ValueStarType>(0)
     const [collapsed,useCollapsed] = useState<boolean>(false)
+    const [onOff, setOnOFF] = useState<boolean>(false)
 
     return (
         <div className="App">
@@ -16,8 +17,7 @@ function App() {
             <PageTitle title={"My page"}/>
             <PageTitle title={"My friends"}/>
             <Accordion title={"Menu"} collapsed={collapsed} useCollapsed={useCollapsed}/>
-            <OnOff/>
-            <OnOff/>
+            <OnOff onOff={onOff} setOnOFF={setOnOFF}/>
         </div>
     );
 }
