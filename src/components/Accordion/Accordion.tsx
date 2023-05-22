@@ -11,7 +11,7 @@ export const Accordion: React.FC<AccordionPropsType> = ({title, collapsed, useCo
     return (
         <div>
             <TitleAccordion title={title} collapsed={collapsed} useCollapsed={useCollapsed}/>
-            {collapsed && <BodyAccordion/>}
+            {!collapsed && <BodyAccordion/>}
         </div>
     )
 }

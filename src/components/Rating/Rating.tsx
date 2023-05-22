@@ -2,7 +2,7 @@ import React from "react";
 
 export type ValueStarType = 0 | 1 | 2 | 3 | 4 | 5
 
-type PropsType = {
+export type PropsType = {
     countStarSelected : ValueStarType
     setCountStarSelected: (number:ValueStarType) => void
 }
