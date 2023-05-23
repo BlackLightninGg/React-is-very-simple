@@ -17,7 +17,9 @@ function App() {
             <Rating countStarSelected={countStarSelected} setCountStarSelected={setCountStarSelected}/>
             <PageTitle title={"My page"}/>
             <PageTitle title={"My friends"}/>
-            <Accordion title={"Menu"} collapsed={collapsed} useCollapsed={useCollapsed}/>
+            <Accordion title={"Menu"} collapsed={collapsed} useCollapsed={useCollapsed}
+                       items={[{title: "Aleksey", value: 1}, {title: "Artur", value: 2}, {title: "Andrew", value: 3}]}
+                       callBack={x => x}/>
             <OnOff onOff={onOff} setOnOFF={setOnOFF}/>
         </div>
     );
