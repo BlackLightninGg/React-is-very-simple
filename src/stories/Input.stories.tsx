@@ -1,10 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
-// import {InputFlux} from "./InputFlux";
 import {useState} from "react";
 
 const meta: Meta<typeof HTMLInputElement> = {
     title: "Input",
-    // component: InputFlux,
     tags: ['autodocs'],
 };
 
