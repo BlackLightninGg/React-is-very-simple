@@ -1,21 +1,66 @@
-import React, {useState} from "react";
-import {action} from "@storybook/addon-actions";
-import {Rating, ValueStarType} from "./Rating";
+import type { Meta, StoryObj } from "@storybook/react";
+import { Rating, ValueStarType } from "./Rating";
+import { action } from "@storybook/addon-actions";
+import { useState } from "react";
 
-export default {
-    title: "Rating",
-    component: Rating,
+const meta: Meta<typeof Rating> = {
+  title: "Rating",
+  component: Rating,
+  tags: ['autodocs'],
 };
 
-const callBack = action("star has been chosen")
+export default meta;
+const callBack = action("Accordion has been clicked");
 
-export const EmptyStars = () => <Rating countStarSelected={0} setCountStarSelected={callBack}/>;
-export const Rating1 = () => <Rating countStarSelected={1} setCountStarSelected={callBack}/>;
-export const Rating2 = () => <Rating countStarSelected={2} setCountStarSelected={callBack}/>;
-export const Rating3 = () => <Rating countStarSelected={3} setCountStarSelected={callBack}/>;
-export const Rating4 = () => <Rating countStarSelected={4} setCountStarSelected={callBack}/>;
-export const Rating5 = () => <Rating countStarSelected={5} setCountStarSelected={callBack}/>;
-export const ChangeRating = () => {
-    const [rating, setRating] = useState<ValueStarType>(3);
-    return <Rating countStarSelected={rating} setCountStarSelected={setRating}/>
+type Story = StoryObj<typeof Rating>;
+
+export const EmptyStars: Story = {
+  args: {
+    countStarSelected: 0,
+    setCountStarSelected: callBack,
+  },
+};
+
+export const Rating1: Story = {
+  args: {
+    countStarSelected: 1,
+    setCountStarSelected: callBack,
+  },
+};
+
+export const Rating2: Story = {
+  args: {
+    countStarSelected: 2,
+    setCountStarSelected: callBack,
+  },
+};
+
+export const Rating3: Story = {
+  args: {
+    countStarSelected: 3,
+    setCountStarSelected: callBack,
+  },
+};
+
+export const Rating4: Story = {
+  args: {
+    countStarSelected: 4,
+    setCountStarSelected: callBack,
+  },
+};
+
+export const Rating5: Story = {
+  args: {
+    countStarSelected: 5,
+    setCountStarSelected: callBack,
+  },
+};
+
+const SetChangeRating = () => {
+  const [value, setValue] = useState<ValueStarType>(3);
+  return <Rating countStarSelected={value} setCountStarSelected={setValue} />;
+};
+
+export const ChangeRating: Story = {
+  render: () => <SetChangeRating />,
 };
