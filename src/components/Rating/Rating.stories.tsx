@@ -56,11 +56,9 @@ export const Rating5: Story = {
   },
 };
 
-const SetChangeRating = () => {
+export const ChangeRating = () => {
   const [value, setValue] = useState<ValueStarType>(3);
   return <Rating countStarSelected={value} setCountStarSelected={setValue} />;
 };
 
-export const ChangeRating: Story = {
-  render: () => <SetChangeRating />,
-};
+
