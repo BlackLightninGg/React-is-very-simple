@@ -5,18 +5,22 @@ type ItemType = {
     value: any
 }
 
+export type ToggleAccordionType = {
+    type: "TOGGLE-ACCORDION"
+}
+
 export type AccordionPropsType = {
     title: string;
     collapsed: boolean;
-    useCollapsed: (collapsed: boolean) => void;
+    dispatchCollapsed: (t: ToggleAccordionType) => void;
     items: ItemType[]
-    callBack: (value: any) => void
+    callBack: (e: any) => void
 };
 
 export const Accordion: React.FC<AccordionPropsType> = ({
                                                             title,
                                                             collapsed,
-                                                            useCollapsed,
+                                                            dispatchCollapsed,
                                                             items,
                                                             callBack,
                                                         }) => {
@@ -24,8 +28,7 @@ export const Accordion: React.FC<AccordionPropsType> = ({
         <div>
             <TitleAccordion
                 title={title}
-                collapsed={collapsed}
-                useCollapsed={useCollapsed}
+                dispatchCollapsed={dispatchCollapsed}
             />
             {collapsed && <BodyAccordion items={items} callBack={callBack}/>}
         </div>
@@ -34,17 +37,15 @@ export const Accordion: React.FC<AccordionPropsType> = ({
 
 type TitleAccordionPropsType = {
     title: string;
-    collapsed: boolean;
-    useCollapsed: (collapsed: boolean) => void;
+    dispatchCollapsed: (t: ToggleAccordionType) => void;
 };
 
 const TitleAccordion: React.FC<TitleAccordionPropsType> = ({
                                                                title,
-                                                               collapsed,
-                                                               useCollapsed,
+                                                               dispatchCollapsed,
                                                            }) => {
     const OnClickHandler = () => {
-        useCollapsed(!collapsed);
+        dispatchCollapsed({type: "TOGGLE-ACCORDION"});
     };
     return <h3 onClick={OnClickHandler}>{title}</h3>;
 };

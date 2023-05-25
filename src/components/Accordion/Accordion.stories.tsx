@@ -1,7 +1,8 @@
 import type {Meta, StoryObj} from '@storybook/react';
 import {Accordion} from "./Accordion";
 import {action} from "@storybook/addon-actions";
-import {useState} from "react";
+import {useReducer} from "react";
+import {AccordionReducer} from "./AccordionReducer";
 
 const meta: Meta<typeof Accordion> = {
     title: "Accordion",
@@ -19,7 +20,7 @@ export const CollapsedAccordion: Story = {
     args: {
         title: "Collapsed Accordion",
         collapsed: true,
-        useCollapsed: callBack,
+        dispatchCollapsed: callBack,
         items: [{title: "Aleksey", value: 1}, {title: "Artur", value: 2}, {title: "Andrew", value: 3}],
         callBack: callBackItems
     },
@@ -29,15 +30,15 @@ export const UncollapsedAccordion: Story = {
     args: {
         title: "Uncollapsed Accordion",
         collapsed: false,
-        useCollapsed: callBack,
+        dispatchCollapsed: callBack,
         items: [{title: "Aleksey", value: 1}, {title: "Artur", value: 2}, {title: "Andrew", value: 3}],
         callBack: callBackItems
     },
 };
 
 const SetSwitchAccordion = () => {
-    const [value, setValue] = useState<boolean>(true)
-    return <Accordion title="Switch Accordion" collapsed={value} useCollapsed={setValue}
+    const [collapsed, dispatchCollapsed] = useReducer(AccordionReducer, false)
+    return <Accordion title="Switch Accordion" collapsed={collapsed} dispatchCollapsed={dispatchCollapsed}
                       items={[{title: "Aleksey", value: 1}, {title: "Artur", value: 2}, {title: "Andrew", value: 3}]}
                       callBack={callBackItems}/>;
 };
