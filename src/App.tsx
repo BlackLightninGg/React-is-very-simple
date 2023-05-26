@@ -1,9 +1,9 @@
 import React, {useReducer, useState} from 'react';
 import './App.css';
-import {Accordion} from "./components/Accordion/Accordion";
-import {PageTitle} from "./components/PageTitle/PageTitle";
-import {Rating, ValueStarType} from "./components/Rating/Rating";
-import OnOff from "./components/OnOff/OnOff";
+import {AccordionMemo} from "./components/Accordion/Accordion";
+import {PageTitleMemo} from "./components/PageTitle/PageTitle";
+import {RatingMemo, ValueStarType} from "./components/Rating/Rating";
+import {OnOffMemo} from "./components/OnOff/OnOff";
 import {AccordionReducer} from "./components/Accordion/AccordionReducer";
 
 function App() {
@@ -14,14 +14,14 @@ function App() {
 
     return (
         <div className="App">
-            <PageTitle title={"Hello, everybody!"}/>
-            <Rating countStarSelected={countStarSelected} setCountStarSelected={setCountStarSelected}/>
-            <PageTitle title={"My page"}/>
-            <PageTitle title={"My friends"}/>
-            <Accordion title={"Menu"} collapsed={collapsed} dispatchCollapsed={dispatchCollapsed}
+            <PageTitleMemo title={"Hello, everybody!"}/>
+            <RatingMemo countStarSelected={countStarSelected} setCountStarSelected={setCountStarSelected}/>
+            <PageTitleMemo title={"My page"}/>
+            <PageTitleMemo title={"My friends"}/>
+            <AccordionMemo title={"Menu"} collapsed={collapsed} dispatchCollapsed={dispatchCollapsed}
                        items={[{title: "Aleksey", value: 1}, {title: "Artur", value: 2}, {title: "Andrew", value: 3}]}
                        callBack={x => x}/>
-            <OnOff onOff={onOff} setOnOFF={setOnOFF}/>
+            <OnOffMemo onOff={onOff} setOnOFF={setOnOFF}/>
         </div>
     );
 }

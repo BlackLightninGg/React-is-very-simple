@@ -1,18 +1,18 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { OnOff } from "./OnOff";
+import { OnOffMemo } from "./OnOff";
 import { action } from "@storybook/addon-actions";
 import { useState } from "react";
 
-const meta: Meta<typeof OnOff> = {
+const meta: Meta<typeof OnOffMemo> = {
   title: "OnOff",
-  component: OnOff,
+  component: OnOffMemo,
   tags: ['autodocs'],
 };
 
 export default meta;
 const callBack = action("Accordion has been clicked");
 
-type Story = StoryObj<typeof OnOff>;
+type Story = StoryObj<typeof OnOffMemo>;
 
 export const On: Story = {
   args: {
@@ -31,7 +31,7 @@ export const Off: Story = {
 const SetSwitchOnOff = () => {
   const [value, setValue] = useState<boolean>(true);
   
-  return <OnOff onOff={value} setOnOFF={setValue} />;
+  return <OnOffMemo onOff={value} setOnOFF={setValue} />;
 };
 
 export const SwitchOnOff: Story = {

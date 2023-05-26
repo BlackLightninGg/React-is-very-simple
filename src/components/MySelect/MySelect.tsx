@@ -11,7 +11,7 @@ export type MySelectPropsType = {
   items: ItemType[];
 };
 
-export const MySelect = (props: MySelectPropsType) => {
+ const MySelect = (props: MySelectPropsType) => {
   const a = props.items.filter((i) => i.value === props.value);
   return (
     <div>
@@ -25,3 +25,5 @@ export const MySelect = (props: MySelectPropsType) => {
     </div>
   );
 };
+
+export const MySelectMemo = React.memo(MySelect)

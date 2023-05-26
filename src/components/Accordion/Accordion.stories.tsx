@@ -1,12 +1,12 @@
 import type {Meta, StoryObj} from '@storybook/react';
-import {Accordion} from "./Accordion";
+import {AccordionMemo} from "./Accordion";
 import {action} from "@storybook/addon-actions";
 import {useReducer} from "react";
 import {AccordionReducer} from "./AccordionReducer";
 
-const meta: Meta<typeof Accordion> = {
+const meta: Meta<typeof AccordionMemo> = {
     title: "Accordion",
-    component: Accordion,
+    component: AccordionMemo,
     tags: ['autodocs'],
 };
 
@@ -14,7 +14,7 @@ export default meta;
 const callBack = action("Accordion has been clicked")
 const callBackItems = action("Item has been clicked")
 
-type Story = StoryObj<typeof Accordion>;
+type Story = StoryObj<typeof AccordionMemo>;
 
 export const CollapsedAccordion: Story = {
     args: {
@@ -38,7 +38,7 @@ export const UncollapsedAccordion: Story = {
 
 const SetSwitchAccordion = () => {
     const [collapsed, dispatchCollapsed] = useReducer(AccordionReducer, false)
-    return <Accordion title="Switch Accordion" collapsed={collapsed} dispatchCollapsed={dispatchCollapsed}
+    return <AccordionMemo title="Switch Accordion" collapsed={collapsed} dispatchCollapsed={dispatchCollapsed}
                       items={[{title: "Aleksey", value: 1}, {title: "Artur", value: 2}, {title: "Andrew", value: 3}]}
                       callBack={callBackItems}/>;
 };

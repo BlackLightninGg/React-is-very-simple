@@ -5,7 +5,7 @@ type PropsType = {
     onOff: boolean
     setOnOFF: (onOff: boolean) => void
 }
-export const OnOff: React.FC<PropsType> = ({onOff, setOnOFF}) => {
+ const OnOff = ({onOff, setOnOFF} : PropsType) => {
 
     const onClickOnHandler = () => {
         setOnOFF(true)
@@ -30,4 +30,4 @@ export const OnOff: React.FC<PropsType> = ({onOff, setOnOFF}) => {
     );
 };
 
-export default OnOff;
+export const OnOffMemo = React.memo(OnOff)

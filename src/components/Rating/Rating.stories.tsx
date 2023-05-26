@@ -1,18 +1,18 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { Rating, ValueStarType } from "./Rating";
+import { RatingMemo, ValueStarType } from "./Rating";
 import { action } from "@storybook/addon-actions";
 import { useState } from "react";
 
-const meta: Meta<typeof Rating> = {
+const meta: Meta<typeof RatingMemo> = {
   title: "Rating",
-  component: Rating,
+  component: RatingMemo,
   tags: ['autodocs'],
 };
 
 export default meta;
 const callBack = action("Accordion has been clicked");
 
-type Story = StoryObj<typeof Rating>;
+type Story = StoryObj<typeof RatingMemo>;
 
 export const EmptyStars: Story = {
   args: {
@@ -58,7 +58,7 @@ export const Rating5: Story = {
 
 export const ChangeRating = () => {
   const [value, setValue] = useState<ValueStarType>(3);
-  return <Rating countStarSelected={value} setCountStarSelected={setValue} />;
+  return <RatingMemo countStarSelected={value} setCountStarSelected={setValue} />;
 };
 
 

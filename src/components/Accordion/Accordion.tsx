@@ -17,48 +17,54 @@ export type AccordionPropsType = {
     callBack: (e: any) => void
 };
 
-export const Accordion: React.FC<AccordionPropsType> = ({
-                                                            title,
-                                                            collapsed,
-                                                            dispatchCollapsed,
-                                                            items,
-                                                            callBack,
-                                                        }) => {
+ const Accordion = ({
+    title,
+    collapsed,
+    dispatchCollapsed,
+    items,
+    callBack,
+} : AccordionPropsType) => {
     return (
         <div>
-            <TitleAccordion
+            <TitleAccordionMemo
                 title={title}
                 dispatchCollapsed={dispatchCollapsed}
             />
-            {collapsed && <BodyAccordion items={items} callBack={callBack}/>}
+            {collapsed && <BodyAccordionMemo items={items} callBack={callBack} />}
         </div>
     );
 };
+
+export const AccordionMemo = React.memo(Accordion)
 
 type TitleAccordionPropsType = {
     title: string;
     dispatchCollapsed: (t: ToggleAccordionType) => void;
 };
 
-const TitleAccordion: React.FC<TitleAccordionPropsType> = ({
-                                                               title,
-                                                               dispatchCollapsed,
-                                                           }) => {
+const TitleAccordion= ({
+    title,
+    dispatchCollapsed,
+} : TitleAccordionPropsType) => {
     const OnClickHandler = () => {
-        dispatchCollapsed({type: "TOGGLE-ACCORDION"});
+        dispatchCollapsed({ type: "TOGGLE-ACCORDION" });
     };
     return <h3 onClick={OnClickHandler}>{title}</h3>;
 };
+
+const TitleAccordionMemo = React.memo(TitleAccordion)
+
 
 type BodyAccordion = {
     items: ItemType[]
     callBack: (value: any) => void
 }
 
-const BodyAccordion: React.FC<BodyAccordion> = ({items, callBack}) => {
+const BodyAccordion = ({ items, callBack } : BodyAccordion) => {
     return (
         <>
             {items.map((el, index) => <li onClick={() => callBack(el.value)} key={index}>{el.title}</li>)}
         </>
     );
 }
+const BodyAccordionMemo = React.memo(BodyAccordion)
