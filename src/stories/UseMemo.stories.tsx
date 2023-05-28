@@ -1,10 +1,10 @@
 import React, {useMemo, useState} from "react";
 
 export default {
-    title: "React useMemo",
+    title: "UseMemo",
 }
 
-export const ReactuseMemo = () => {
+export const UseMemo = () => {
     const [a, setA] = useState<number>(5)
     const [b, setB] = useState<number>(5)
 
@@ -54,7 +54,7 @@ const Users = (props: { users: Array<string> }) => {
 
 const UsersHOC = React.memo(Users)
 
-export const ReactuseMemoWithReactMemo = () => {
+export const UseMemoWithReactMemo = () => {
     console.log("ReactuseMemoWithReactMemo")
     const [counter, setCounter] = useState<number>(0)
     const [users, setUsers] = useState<Array<string>>(["Kaya", "Katya", "Karina"])
